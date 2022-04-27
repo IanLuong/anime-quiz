@@ -1,5 +1,6 @@
 import React from "react"
 import Start from "./components/Start"
+import Quiz from "./components/Quiz"
 import "./style.css"
 
 export default function App() {
@@ -12,7 +13,7 @@ export default function App() {
 
   return (
     <div className="container">
-      {newGame ? <Start startGame={startGame}/> : <h1>QUIZ COMPONENT</h1>}
+      {newGame ? <Start startGame={startGame}/> : <Quiz />}
 
     </div>
   )
