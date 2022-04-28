@@ -53,12 +53,20 @@ body {
   cursor: pointer;
 }
 
-.start-screen--button:hover, .submit-button:hover {
+.start-screen--button:hover, .submit-button:hover, .question--choice:hover {
   background-color: #3e8e41;
+}
+
+.question--choice:hover {
+  background: #D6DBF5;
 }
 
 .start-screen--button:active, .submit-button:active {
   background-color: #3e8e41;
+  transform: translateY(2px);
+}
+
+.question--choice:active {
   transform: translateY(2px);
 }
 
@@ -119,4 +127,8 @@ body {
 
 .selected {
   background: #D6DBF5;
+}
+
+hr {
+  border: 1px solid #DBDEF0;
 }
