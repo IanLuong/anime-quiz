@@ -12,11 +12,14 @@ export default function Quiz() {
 
   console.log(questions)
 
-  const mappedQuestions = questions.map(question => <Question question={question} />)
+  const mappedQuestions = questions.map(questionInfo => {
+    return <Question questionInfo={questionInfo} />
+  })
 
   return (
-    <div>
+    <div className="form">
       {mappedQuestions}
+      <button className="submit-button">Check answers</button>
     </div>
   )
 }
