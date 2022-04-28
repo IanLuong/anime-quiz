@@ -13,8 +13,7 @@ export default function App() {
 
   return (
     <div className="container">
-      {/* {newGame ? <Start startGame={startGame}/> : <Quiz /> */}
-      <Quiz />
+      {newGame ? <Start startGame={startGame}/> : <Quiz />}
     </div>
   )
 }
