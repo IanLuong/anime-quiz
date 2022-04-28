@@ -8,7 +8,7 @@ export default function Question(props) {
     let string = JSON.stringify(input)
     string = string.replace(/&quot;/g, "'")
     string = string.replace(/&#039;/g, "'")
-    return string.slice(1, string.length-1)
+    return string.slice(1, string.length - 1)
   }
 
   const answerButtons = answers.map(answer => <button className="question--choice">{answer}</button>)
@@ -16,8 +16,10 @@ export default function Question(props) {
   return (
     <div className="question">
       <h3 className="question--prompt">{parseQuestion(props.questionInfo.question)}</h3>
-      {answerButtons}
-      <hr/>
+      <div className="question--choices">
+        {answerButtons}
+      </div>
+      <hr />
     </div>
   )
 }

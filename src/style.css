@@ -53,11 +53,70 @@ body {
   cursor: pointer;
 }
 
-.start-screen--button:hover {
+.start-screen--button:hover, .submit-button:hover {
   background-color: #3e8e41;
 }
 
-.start-screen--button:active {
+.start-screen--button:active, .submit-button:active {
   background-color: #3e8e41;
   transform: translateY(2px);
+}
+
+.question--choices {
+  display: flex;
+  gap: 8px;
+}
+
+.question--prompt {
+  font-family: 'Karla';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 19px;
+  /* identical to box height */
+
+
+  color: #293264;
+}
+
+.question--choice {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 10.24px;
+  line-height: 12px;
+  /* identical to box height */
+
+  text-align: center;
+
+  color: #293264;
+  height: 20.65px;
+  border: 0.794239px solid #4D5B9E;
+  box-sizing: border-box;
+  border-radius: 7.94239px;
+}
+
+
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.submit-button {
+  background: #4D5B9E;
+  border-radius: 10px;
+  width: 120px;
+  height: 35px;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  text-align: center;
+  border: none;
+  color: #F5F7FB;
+  align-self: center;
+  margin-top: 8px;
+}
+
+.selected {
+  background: #D6DBF5;
 }
