@@ -16,11 +16,16 @@ export default function Quiz(props) {
   function setUpQuestionObjects(results) {
     const questionObjects = []
     for (let result of results) {
+
+      const decodedQuestion = decodeHtml(result.question)
+      const decodedCorrectAnswer = decodeHtml(result.correct_answer)
+      const decodedIncorrectAnswers = result.incorrect_answers.map(answer => decodeHtml(answer))
+
       questionObjects.push({
         id: nanoid(),
-        question: parseQuestion(result.question),
-        correct_answer: result.correct_answer,
-        answers: scrambleAnswers([result.correct_answer, ...result.incorrect_answers]),
+        question: decodedQuestion,
+        correct_answer: decodedCorrectAnswer,
+        answers: scrambleAnswers([decodedCorrectAnswer, ...decodedIncorrectAnswers]),
         selected_answer: "",
         is_correct: false
       })
@@ -33,16 +38,15 @@ export default function Quiz(props) {
   function selectAnswer(id, answer) {
     setQuestions(prevQuestions => prevQuestions.map(question => {
       return question.id === id ?
-        {...question, selected_answer: answer} :
+        { ...question, selected_answer: answer } :
         question
     }))
   }
 
-  function parseQuestion(input) {
-    let string = JSON.stringify(input)
-    string = string.replace(/&quot;/g, "'")
-    string = string.replace(/&#039;/g, "'")
-    return string.slice(1, string.length - 1)
+  function decodeHtml(input) {
+    var txt = document.createElement("textarea");
+    txt.innerHTML = input;
+    return txt.value;
   }
 
   function scrambleAnswers(answerArray) {
@@ -62,29 +66,14 @@ export default function Quiz(props) {
       <h3 className="question--prompt">{questionObject.question}</h3>
       <div className="question--choices">
 
-        <Answer
-          selectAnswer={() => selectAnswer(questionObject.id, questionObject.answers[0])}
-          answer={questionObject.answers[0]}
-          selectedAnswer={questionObject.selected_answer}
-        />
-
-        <Answer
-          selectAnswer={() => selectAnswer(questionObject.id, questionObject.answers[1])}
-          answer={questionObject.answers[1]}
-          selectedAnswer={questionObject.selected_answer}
-        />
-
-        <Answer
-          selectAnswer={() => selectAnswer(questionObject.id, questionObject.answers[2])}
-          answer={questionObject.answers[2]}
-          selectedAnswer={questionObject.selected_answer}
-        />
-
-        <Answer
-          selectAnswer={() => selectAnswer(questionObject.id, questionObject.answers[3])}
-          answer={questionObject.answers[3]}
-          selectedAnswer={questionObject.selected_answer}
-        />
+        {questionObject.answers.map(answer => (
+          <Answer
+            key={answer}
+            selectAnswer={() => selectAnswer(questionObject.id, answer)}
+            answer={answer}
+            selectedAnswer={questionObject.selected_answer}
+          />
+        ))}
 
       </div>
       <hr />
