@@ -6,12 +6,16 @@ export default function Quiz(props) {
 
   const [finished, setFinished] = React.useState(false)
   const [questions, setQuestions] = React.useState([])
+  const [score, setScore] = React.useState(0)
 
   React.useEffect(() => {
-    fetch("https://opentdb.com/api.php?amount=5&category=31&difficulty=medium&type=multiple")
-      .then(response => response.json())
-      .then(data => setUpQuestionObjects(data.results))
-  }, [])
+    if (!finished) {
+      fetch("https://opentdb.com/api.php?amount=5&category=31&difficulty=medium&type=multiple")
+        .then(response => response.json())
+        .then(data => setUpQuestionObjects(data.results))
+    }
+    setScore(finished ? questions.filter(question => question.is_correct).length : 0)
+  }, [finished])
 
   function setUpQuestionObjects(results) {
     const questionObjects = []
@@ -33,7 +37,6 @@ export default function Quiz(props) {
     setQuestions(questionObjects)
   }
 
-  console.log(questions)
 
   function selectAnswer(id, answer) {
     setQuestions(prevQuestions => prevQuestions.map(question => {
@@ -60,6 +63,26 @@ export default function Quiz(props) {
     return shuffled
   }
 
+  function checkAnswers() {
+
+    const allAnswered = questions.filter(question => question.selected_answer).length === questions.length
+
+    if (allAnswered) {
+      setQuestions(prevState => prevState.map(question => {
+        return question.correct_answer === question.selected_answer ?
+          { ...question, is_correct: true } :
+          question
+      }))
+      setFinished(true)
+    } else {
+      alert("You ain't answered all the questions blud")
+    }
+  }
+
+  function startNewGame() {
+    setFinished(false)
+  }
+
 
   const mappedQuestions = questions.map(questionObject => (
     <div className="question">
@@ -72,6 +95,7 @@ export default function Quiz(props) {
             selectAnswer={() => selectAnswer(questionObject.id, answer)}
             answer={answer}
             selectedAnswer={questionObject.selected_answer}
+            isCorrect={questionObject.is_correct}
           />
         ))}
 
@@ -80,11 +104,17 @@ export default function Quiz(props) {
     </div>
   ))
 
+  console.log(questions)
+
   return (
     <div className="form">
       {mappedQuestions}
-      {!finished && <button className="submit-button">Check answers</button>}
-      {finished && <button className="replay-button">Play again</button>}
+      {finished ?
+        <div className="results">
+          <p>You got {score}/{questions.length} correct!</p>
+          <button className="submit-button" onClick={startNewGame}>Play again (New Questions)</button>
+        </div> :
+        <button className="submit-button" onClick={checkAnswers}>Check answers</button>}
     </div>
   )
 }
