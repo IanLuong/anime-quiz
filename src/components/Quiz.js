@@ -106,8 +106,6 @@ export default function Quiz(props) {
     </div>
   ))
 
-  console.log(questions)
-
   return (
     <div className="form">
       {mappedQuestions}
