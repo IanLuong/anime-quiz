@@ -136,6 +136,10 @@ body {
   background: #F8BCBC;
 }
 
+.unchosen {
+  opacity: 0.5;
+}
+
 hr {
   border: 1px solid #DBDEF0;
 }

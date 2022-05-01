@@ -6,19 +6,21 @@ export default function Answer(props) {
   const correct = props.finished && props.answer === props.correctAnswer
   const incorrect = props.finished && (props.selectedAnswer === props.answer)
 
-  let status
+  let status = ""
   if(selected) {
     status = "selected"
   } else if(correct) {
     status = "correct"
   } else if(incorrect) {
     status = "incorrect"
+  } else if(props.finished) {
+    status = "unchosen"
   }
 
   return (
     <button
       className={`question--choice${props.finished ? "--finished" : ""} ${status}`}
-      onClick={!props.finished && props.selectAnswer}
+      onClick={!props.finished ? props.selectAnswer : undefined}
     >
       {props.answer}
     </button>
