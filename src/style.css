@@ -139,3 +139,25 @@ body {
 hr {
   border: 1px solid #DBDEF0;
 }
+
+.results {
+  display: flex;
+  justify-content: center;
+}
+
+.results--score {
+  font-size: 28px;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  line-height: 15px;
+  text-align: center;
+
+  color: #293264;
+
+  margin-left: auto;
+}
+
+.results--replay {
+  margin-left: auto;
+}

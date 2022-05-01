@@ -113,8 +113,8 @@ export default function Quiz(props) {
       {mappedQuestions}
       {finished ?
         <div className="results">
-          <p>You got {score}/{questions.length} correct!</p>
-          <button className="submit-button" onClick={startNewGame}>Play again (New Questions)</button>
+          <h4 className="results--score">You got {score}/{questions.length} correct!</h4>
+          <button className="submit-button results--replay" onClick={startNewGame}>Play again (New Questions)</button>
         </div> :
         <button className="submit-button" onClick={checkAnswers}>Check answers</button>}
     </div>
