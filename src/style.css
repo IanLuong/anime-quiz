@@ -50,11 +50,11 @@ body {
   border: none;
 
   margin-top: 16px;
-  cursor: pointer;
 }
 
 .start-screen--button:hover, .submit-button:hover, .question--choice:hover {
   background-color: #3e8e41;
+  cursor: pointer;
 }
 
 .question--choice:hover {
@@ -87,7 +87,7 @@ body {
   color: #293264;
 }
 
-.question--choice {
+.question--choice, .question--choice--finished {
   font-family: 'Inter';
   font-style: normal;
   font-weight: 500;
@@ -103,7 +103,6 @@ body {
   box-sizing: border-box;
   border-radius: 7.94239px;
 }
-
 
 .form {
   display: flex;
@@ -127,6 +126,14 @@ body {
 
 .selected {
   background: #D6DBF5;
+}
+
+.correct {
+  background: #94D7A2;
+}
+
+.incorrect {
+  background: #F8BCBC;
 }
 
 hr {
