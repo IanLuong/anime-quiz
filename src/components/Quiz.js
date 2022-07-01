@@ -112,9 +112,9 @@ export default function Quiz(props) {
       {finished ?
         <div className="results">
           <h4 className="results--score">You got {score}/{questions.length} correct!</h4>
-          <button className="submit-button results--replay" onClick={startNewGame}>Play again (New Questions)</button>
+          <button className="submit-button system-button" onClick={startNewGame}>Play again (New Questions)</button>
         </div> :
-        <button className="submit-button" onClick={checkAnswers}>Check answers</button>}
+        <button className="submit-button system-button" onClick={checkAnswers}>Check answers</button>}
     </div>
   )
 }

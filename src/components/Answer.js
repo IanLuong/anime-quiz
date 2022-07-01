@@ -19,7 +19,7 @@ export default function Answer(props) {
 
   return (
     <button
-      className={`question--choice${props.finished ? "--finished" : ""} ${status}`}
+      className={`question--choice ${status}`}
       onClick={!props.finished ? props.selectAnswer : undefined}
     >
       {props.answer}
