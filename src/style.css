@@ -9,6 +9,8 @@
 
 body {
     background: #F5F7FB;
+    background: url("img/patternpad.svg");
+    background-size: cover;
 }
 
 #root {
@@ -75,7 +77,7 @@ hr {
 
 /* Choices */
 
-.question--choice {
+.question--choice, .question--choice--finished {
     font-size: .8rem;
     color: #293264;
     border: 1px solid #4D5B9E;
