@@ -10,7 +10,7 @@ export default function Quiz(props) {
 
   React.useEffect(() => {
     if (!finished) {
-      fetch("https://opentdb.com/api.php?amount=10&category=31&difficulty=medium&type=multiple")
+      fetch("https://opentdb.com/api.php?amount=10&category=31")
         .then(response => response.json())
         .then(data => setUpQuestionObjects(data.results))
     }
