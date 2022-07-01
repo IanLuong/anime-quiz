@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/anime-quiz/static/css/main.03417f3e.css",
-    "main.js": "/anime-quiz/static/js/main.27fdd9f2.js",
+    "main.js": "/anime-quiz/static/js/main.b1da86cf.js",
     "static/media/patternpad.svg": "/anime-quiz/static/media/patternpad.c94ec8892a0ba1cf4591.svg",
     "index.html": "/anime-quiz/index.html",
     "main.03417f3e.css.map": "/anime-quiz/static/css/main.03417f3e.css.map",
-    "main.27fdd9f2.js.map": "/anime-quiz/static/js/main.27fdd9f2.js.map"
+    "main.b1da86cf.js.map": "/anime-quiz/static/js/main.b1da86cf.js.map"
   },
   "entrypoints": [
     "static/css/main.03417f3e.css",
-    "static/js/main.27fdd9f2.js"
+    "static/js/main.b1da86cf.js"
   ]
 }
