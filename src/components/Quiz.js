@@ -1,6 +1,8 @@
 import React from "react";
 import Answer from "./Answer";
 import { nanoid } from "nanoid"
+import { toast, ToastContainer } from "react-toastify"
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function Quiz(props) {
 
@@ -88,8 +90,8 @@ export default function Quiz(props) {
     for(let question of questions) {
         shareText += question.correct_answer === question.selected_answer ? "✔️" : "✖️" 
     }
-
     navigator.clipboard.writeText(shareText)
+    toast.success('Saved to clipboard!')
   }
 
 
@@ -127,6 +129,7 @@ export default function Quiz(props) {
           </div>
         </div> :
         <button className="submit-button system-button" onClick={checkAnswers}>Check answers</button>}
+        <ToastContainer position="top-center"/>
     </div>
   )
 }
