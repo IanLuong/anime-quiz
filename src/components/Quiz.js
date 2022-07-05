@@ -83,6 +83,15 @@ export default function Quiz(props) {
     setFinished(false)
   }
 
+  function shareScore() {
+    let shareText = `Anime Quiz: ${score}/${questions.length}\n\n`
+    for(let question of questions) {
+        shareText += question.correct_answer === question.selected_answer ? "✔️" : "✖️" 
+    }
+
+    navigator.clipboard.writeText(shareText)
+  }
+
 
   const mappedQuestions = questions.map(questionObject => (
     <div className="question">
@@ -112,7 +121,10 @@ export default function Quiz(props) {
       {finished ?
         <div className="results">
           <h4 className="results--score">You got {score}/{questions.length} correct!</h4>
-          <button className="submit-button system-button" onClick={startNewGame}>Play again (New Questions)</button>
+          <div className="results--buttons">
+              <button className="submit-button system-button" onClick={shareScore}>Share your score! (Copy to Clipboard)</button>
+              <button className="submit-button system-button" onClick={startNewGame}>Play again (New Questions)</button>
+          </div>
         </div> :
         <button className="submit-button system-button" onClick={checkAnswers}>Check answers</button>}
     </div>
